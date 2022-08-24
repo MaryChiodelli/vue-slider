@@ -1,7 +1,7 @@
 const slides = [
 	{
 		imgSrc: './img/01.jpg',
-		isActive: false
+		isActive: true
 	},
 	{
 		imgSrc: './img/02.jpg',
@@ -9,7 +9,7 @@ const slides = [
 	},
 	{
 		imgSrc: './img/03.jpg',
-		isActive: true
+		isActive: false
 	},
 	{
 		imgSrc: './img/04.jpg',
@@ -24,7 +24,26 @@ const slides = [
 const app = new Vue({
 	el: '#app',
 	data: {
-		slides: slides
+		slides: slides,
+		index: 0
+	},
+	methods: {
+		goPrevSlide() {
+			const slideActive = slides[this.index];
+			slideActive.isActive = false;
+			const nextSlide = slides[this.index - 1];
+			nextSlide.isActive = true;
+			this.index = this.index - 1;
+			console.log(this.index);
+		},
+		goNextSlide() {
+			const slideActive = slides[this.index];
+			slideActive.isActive = false;
+			const nextSlide = slides[this.index + 1];
+			nextSlide.isActive = true;
+			this.index = this.index + 1;
+			console.log(this.index);
+		}
 	}
 });
 
