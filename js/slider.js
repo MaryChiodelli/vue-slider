@@ -31,20 +31,30 @@ const app = new Vue({
 		goPrevSlide() {
 			const slideActive = slides[this.index];
 			slideActive.isActive = false;
-			const nextSlide = slides[this.index - 1];
+			
+			if (this.index === 0) {
+				this.index = this.slides.length - 1;
+			} else {
+				this.index = this.index - 1;
+			}
+
+			const nextSlide = slides[this.index];
 			nextSlide.isActive = true;
-			this.index = this.index - 1;
-			console.log(this.index);
 		},
 		goNextSlide() {
 			const slideActive = slides[this.index];
 			slideActive.isActive = false;
-			const nextSlide = slides[this.index + 1];
+
+			if (this.index === this.slides.length - 1) {
+				this.index = 0;
+			} else {
+				this.index = this.index + 1;
+			}
+
+			const nextSlide = slides[this.index];
 			nextSlide.isActive = true;
-			this.index = this.index + 1;
-			console.log(this.index);
 		}
 	}
 });
 
-console.log(app.slides);
+console.log(app);
