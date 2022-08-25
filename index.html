@@ -19,9 +19,9 @@
         <ul class="slides-wrapper">
           <li 
             class="slide" 
-            :class="slide.isActive ? 'active' : ''"
-            v-for="slide in slides">
-            <img :src="slide.imgSrc" alt="">
+            :class="index === activeIndex ? 'active' : ''"
+            v-for="(slide, index) in slides">
+            <img :src="slide" alt="">
           </li>
           <!-- <li class="slide">
             <img src="./img/02.jpg" alt="">
